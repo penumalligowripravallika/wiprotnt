@@ -1,0 +1,25 @@
+package miniproject.scenario3;
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+public class ConnectionManager {
+
+    public static Connection getConnection() {
+
+        Connection con = null;
+
+        try {
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+
+            con = DriverManager.getConnection(
+                    "jdbc:oracle:thin:@localhost:1521/XEPDB1",
+                    "hr",
+                    "hr");
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        return con;
+    }
+}
